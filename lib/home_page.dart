@@ -3,7 +3,15 @@ import 'package:pop_points/login.dart';
 import 'package:pop_points/register.dart';
 import 'package:pop_points/util.dart';
 
-class homePage extends StatelessWidget {
+class homePage extends StatefulWidget {
+  @override
+  _homePageState createState() => _homePageState();
+}
+
+
+class _homePageState extends State<homePage> {
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,8 +20,16 @@ class homePage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          buildRaisedButtonPage("FAZER LOGIN", context, loginPage(), EdgeInsets.fromLTRB(18.0, 10.0, 18.0, 10.0)),
-          buildRaisedButtonPage("CADASTRE-SE", context, registerPage(), EdgeInsets.fromLTRB(18.0, 10.0, 18.0, 10.0)),
+          SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                buildRaisedButtonPage("FAZER LOGIN", context, loginPage(), EdgeInsets.fromLTRB(18.0, 10.0, 18.0, 10.0)),
+                buildRaisedButtonPage("CADASTRE-SE", context, registerPage(), EdgeInsets.fromLTRB(18.0, 10.0, 18.0, 10.0)),
+              ],
+            ),
+          )
 
         ],
       ),

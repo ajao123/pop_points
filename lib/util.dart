@@ -19,16 +19,16 @@ Widget buildRaisedButtonPage(String text, BuildContext context,
   );
 }
 
-Widget buildRaisedButton(
-    String text, Function function, EdgeInsets edgeInsets, GlobalKey<FormState> _formKey) {
+Widget buildRaisedButton(String text, Function function, EdgeInsets edgeInsets,
+    GlobalKey<FormState> _formKey) {
   return Padding(
     padding: edgeInsets,
     child: RaisedButton(
       child:
           new Text(text, style: TextStyle(color: Colors.white, fontSize: 15.0)),
       onPressed: () {
-        if(_formKey.currentState.validate()){
-            function();
+        if (_formKey.currentState.validate()) {
+          function();
         }
       },
       shape: new RoundedRectangleBorder(
@@ -39,8 +39,39 @@ Widget buildRaisedButton(
   );
 }
 
-Widget buildTextField(String hintText, InputBorder border, Icon icon,
-    TextEditingController controller, Function function, FormFieldValidator validator) {
+Widget buildRaisedLoginPage(
+    String text,
+    Function function,
+    EdgeInsets edgeInsets,
+    GlobalKey<FormState> _formKey,
+    BuildContext context,
+    StatefulWidget widget) {
+  return Padding(
+    padding: edgeInsets,
+    child: RaisedButton(
+      child:
+          new Text(text, style: TextStyle(color: Colors.white, fontSize: 15.0)),
+      onPressed: () {
+        if (_formKey.currentState.validate()) {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => widget));
+        }
+      },
+      shape: new RoundedRectangleBorder(
+        borderRadius: new BorderRadius.circular(30.0),
+      ),
+      color: Colors.greenAccent,
+    ),
+  );
+}
+
+Widget buildTextField(
+    String hintText,
+    InputBorder border,
+    Icon icon,
+    TextEditingController controller,
+    Function function,
+    FormFieldValidator validator) {
   return Padding(
     padding: EdgeInsets.fromLTRB(18.0, 10.0, 18.0, 10.0),
     child: TextFormField(
@@ -76,9 +107,9 @@ Widget buildTextFieldRegister(
         child: new TextFormField(
           obscureText: obscureText,
           decoration: InputDecoration(
-              hintText: hintText,
-              border: border,
-              prefixIcon: icon,
+            hintText: hintText,
+            border: border,
+            prefixIcon: icon,
           ),
           validator: validator,
         ),

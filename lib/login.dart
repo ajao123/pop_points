@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pop_points/recoverySenha.dart';
 import 'package:pop_points/home_page.dart';
 import 'package:pop_points/util.dart';
+import 'package:pop_points/myAccount.dart';
 
 class loginPage extends StatefulWidget {
   @override
@@ -67,8 +68,8 @@ class _loginPageState extends State<loginPage> {
                                 (value) {
                               if (value.isEmpty) return "Insira sua senha";
                             }),
-                        buildRaisedButton("ENTRAR", null,
-                            EdgeInsets.fromLTRB(18.0, 10.0, 18.0, 10.0), _formKey),
+                        buildRaisedLoginPage("ENTRAR", null,
+                            EdgeInsets.fromLTRB(18.0, 10.0, 18.0, 10.0), _formKey, context, myAccountPage()),
                         buildRaisedButtonPage(
                             "Esqueceu a senha?",
                             context,

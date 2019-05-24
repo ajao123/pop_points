@@ -96,22 +96,56 @@ Widget buildTextFieldRegister(
     BorderRadius borderRadius,
     EdgeInsets edgeInsets,
     FormFieldValidator validator) {
-  return Padding(
-      padding: edgeInsets,
-      child: Container(
-        padding: EdgeInsets.fromLTRB(10.0, 0.0, 0.0, 0.0),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: borderRadius,
-        ),
-        child: new TextFormField(
-          obscureText: obscureText,
-          decoration: InputDecoration(
-            hintText: hintText,
-            border: border,
-            prefixIcon: icon,
+      return Padding(
+        padding: edgeInsets,
+        child: Container(
+          padding: EdgeInsets.fromLTRB(10.0, 0.0, 0.0, 0.0),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: borderRadius,
           ),
-          validator: validator,
-        ),
-      ));
+          child: new TextFormField(
+            obscureText: obscureText,
+            decoration: InputDecoration(
+              hintText: hintText,
+              border: border,
+              prefixIcon: icon,
+            ),
+            validator: validator,
+          ),
+        ));
 }
+
+Widget ContainerListView(String text, Icon icon) {
+  return Container(
+    width: 120.0,
+    child: Card(
+      borderOnForeground: true,
+      color: const Color(0xff009788),
+      child: Wrap(
+        children: <Widget>[
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              IconButton(icon: icon, onPressed: (){},color: Colors.white,),
+              Text(text)
+            ],
+          )
+        ],
+      ),
+    ),
+  );
+}
+Widget ContainerBottomNavigationBar(String text, Icon icon){
+  return Container(
+          padding: EdgeInsets.all(10.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              IconButton(icon: icon, onPressed: (){}),
+              Text(text)
+            ],
+          )
+        );
+}
+

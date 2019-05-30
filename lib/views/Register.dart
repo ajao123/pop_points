@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pop_points/home_page.dart';
-import 'package:pop_points/util.dart';
 
 class registerPage extends StatefulWidget {
   @override
@@ -60,7 +58,7 @@ class _registerPageState extends State<registerPage> {
   void _verificarIndicante() {
     String mensagem="foifoifoi";
     // flutter defined function
-    if (codigoController.toString() == null) {
+    if (codigoController.toString().isNotEmpty) {
       mensagem = "Indicante Válido";
     } else {
       mensagem = "Indicante Inválido";
@@ -91,8 +89,7 @@ class _registerPageState extends State<registerPage> {
           alignment: Alignment.centerLeft,
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => homePage()));
+            Navigator.pop(context);
           },
         ),
         title: Text("Cadastro Rapido"),
@@ -113,12 +110,10 @@ class _registerPageState extends State<registerPage> {
                     child:Row(
                       children: <Widget>[
                         new Flexible(
-                          child: buildTextFieldRegister(
+                          child: buildTextFields(
                               "Código de Indicação",
                               InputBorder.none,
-                              null,
                               codigoController,
-                              null,
                               false,
                               new BorderRadius.circular(30.0),
                               EdgeInsets.fromLTRB(10.0, 10.0, 0.0, 10.0), null),
@@ -133,45 +128,37 @@ class _registerPageState extends State<registerPage> {
                       ],
                     )
                 ),
-                buildTextFieldRegister(
+                buildTextFields(
                     "Nome Completo",
                     InputBorder.none,
-                    null,
                     nameController,
-                    null,
                     false,
                     new BorderRadius.circular(30.0),
                     EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0), (value) {
                   if (value.isEmpty) return "Insira seu nome completo";
                 }),
-                buildTextFieldRegister(
+                buildTextFields(
                     "Email",
                     InputBorder.none,
-                    null,
                     emailController,
-                    null,
                     false,
                     new BorderRadius.circular(30.0),
                     EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0), (value) {
                   if (value.isEmpty) return "Informe seu Email";
                 }),
-                buildTextFieldRegister(
+                buildTextFields(
                     "Informe sua senha",
                     InputBorder.none,
-                    null,
                     senhaController,
-                    null,
                     true,
                     new BorderRadius.circular(30.0),
                     EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0), (value) {
                   if (value.isEmpty) return "Informe sua senha";
                 }),
-                buildTextFieldRegister(
+                buildTextFields(
                     "Repetir a senha",
                     InputBorder.none,
-                    null,
                     repeatSenhaController,
-                    null,
                     true,
                     new BorderRadius.circular(30.0),
                     EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0), (value) {
@@ -212,4 +199,51 @@ class _registerPageState extends State<registerPage> {
       ),
     );
   }
+}
+
+Widget buildRaisedButton(String text, Function function, EdgeInsets edgeInsets,
+    GlobalKey<FormState> _formKey) {
+  return Padding(
+    padding: edgeInsets,
+    child: RaisedButton(
+      child:
+      new Text(text, style: TextStyle(color: Colors.white, fontSize: 15.0)),
+      onPressed: () {
+        if (_formKey.currentState.validate()) {
+          function();
+        }
+      },
+      shape: new RoundedRectangleBorder(
+        borderRadius: new BorderRadius.circular(30.0),
+      ),
+      color: Colors.greenAccent,
+    ),
+  );
+}
+Widget buildTextFields(
+    String hintText,
+    InputBorder border,
+    TextEditingController controller,
+    bool obscureText,
+    BorderRadius borderRadius,
+
+    EdgeInsets edgeInsets,
+    FormFieldValidator validator) {
+  return Padding(
+      padding: edgeInsets,
+      child: Container(
+        padding: edgeInsets,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: borderRadius,
+        ),
+        child: new TextFormField(
+          obscureText: obscureText,
+          decoration: InputDecoration(
+            hintText: hintText,
+            border: border,
+          ),
+          validator: validator,
+        ),
+      ));
 }

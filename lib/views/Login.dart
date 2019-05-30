@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pop_points/recoverySenha.dart';
-import 'package:pop_points/home_page.dart';
-import 'package:pop_points/util.dart';
-import 'package:pop_points/myAccount.dart';
+import 'package:pop_points/RecoverySenha.dart';
+import 'package:pop_points/HomePage.dart';
+import 'package:pop_points/MyAccount.dart';
 
 class loginPage extends StatefulWidget {
   @override
@@ -25,8 +24,7 @@ class _loginPageState extends State<loginPage> {
           alignment: Alignment.centerLeft,
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => homePage()));
+            Navigator.pop(context);
           },
         ),
         title: Text("Login"),
@@ -44,37 +42,61 @@ class _loginPageState extends State<loginPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: <Widget>[
-                        buildTextFieldRegister(
+                        buildTextFields(
                             "Email",
                             InputBorder.none,
                             Icon(Icons.person),
                             emailController,
-                            null,
                             false,
                             new BorderRadius.circular(30.0),
                             EdgeInsets.fromLTRB(10.0, 10.0, 0.0, 10.0),
                                 (value){
                               if (value.isEmpty) return "Insira seu login";
                             }),
-                        buildTextFieldRegister(
+                        buildTextFields(
                             "Senha",
                             InputBorder.none,
                             Icon(Icons.lock),
                             senhaController,
-                            null,
                             false,
                             new BorderRadius.circular(30.0),
                             EdgeInsets.fromLTRB(10.0, 10.0, 0.0, 10.0),
                                 (value) {
                               if (value.isEmpty) return "Insira sua senha";
                             }),
-                        buildRaisedLoginPage("ENTRAR", null,
-                            EdgeInsets.fromLTRB(18.0, 10.0, 18.0, 10.0), _formKey, context, myAccountPage()),
-                        buildRaisedButtonPage(
-                            "Esqueceu a senha?",
-                            context,
-                            recoverySenhaPage(),
-                            EdgeInsets.fromLTRB(18.0, 10.0, 18.0, 10.0)),
+                        Padding(
+                          padding:  EdgeInsets.fromLTRB(18.0, 10.0, 18.0, 10.0),
+                          child: RaisedButton(
+                            child:
+                            new Text("Entrar", style: TextStyle(color: Colors.white, fontSize: 15.0)),
+                            onPressed: () {
+                              if (_formKey.currentState.validate()) {
+                                Navigator.push(
+                                    context, MaterialPageRoute(builder: (context) => myAccountPage()));
+                              }
+                            },
+                            shape: new RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(30.0),
+                            ),
+                            color: Colors.greenAccent,
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(18.0, 10.0, 18.0, 10.0),
+                          child: RaisedButton(
+                            child:
+                            new Text("Esqueceu a senha?", style: TextStyle(color: Colors.white, fontSize: 15.0)),
+                            onPressed: () {
+                              Navigator.push(
+                                  context, MaterialPageRoute(builder: (context) => recoverySenhaPage()));
+                            },
+                            shape: new RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(30.0),
+                            ),
+                            color: Colors.greenAccent,
+                          ),
+                        )
+
                       ],
                     ),
                   ),

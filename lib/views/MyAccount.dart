@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pop_points/login.dart';
-import 'package:pop_points/util.dart';
 
 class myAccountPage extends StatefulWidget {
   @override
@@ -16,8 +14,15 @@ class _myAccountPageState extends State<myAccountPage> {
           IconButton(
             icon: Icon(Icons.person_add),
             onPressed: (){},
-          )
+          ),
         ],
+        leading: IconButton(
+          alignment: Alignment.centerLeft,
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
         title: Text("Minha Conta"),
         backgroundColor: Colors.greenAccent,
         centerTitle: true,
@@ -73,11 +78,11 @@ class _myAccountPageState extends State<myAccountPage> {
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: <Widget>[
-                  ContainerListView("Solicitar Resgate", Icon(Icons.check)),
-                  ContainerListView("Transferir Pontos", Icon(Icons.announcement)),
-                  ContainerListView("Localizar Fornecedores", Icon(Icons.explore)),
-                  ContainerListView("Add", Icon(Icons.add)),
-                  ContainerListView("format", Icon(Icons.format_align_center)),
+                  HomePageListItem("Solicitar Resgate", Icon(Icons.check)),
+                  HomePageListItem("Transferir Pontos", Icon(Icons.announcement)),
+                  HomePageListItem("Localizar Fornecedores", Icon(Icons.explore)),
+                  HomePageListItem("Add", Icon(Icons.add)),
+                  HomePageListItem("format", Icon(Icons.format_align_center)),
                 ],
               ),
             ),
@@ -96,11 +101,11 @@ class _myAccountPageState extends State<myAccountPage> {
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: <Widget>[
-                  ContainerListView("Ver Extrato", Icon(Icons.graphic_eq)),
-                  ContainerListView("Meus Indicados", Icon(Icons.people)),
-                  ContainerListView("Historico de Pontos", Icon(Icons.access_time)),
-                  ContainerListView("Add", Icon(Icons.add)),
-                  ContainerListView("format", Icon(Icons.format_align_center)),
+                  HomePageListItem("Ver Extrato", Icon(Icons.graphic_eq)),
+                  HomePageListItem("Meus Indicados", Icon(Icons.people)),
+                  HomePageListItem("Historico de Pontos", Icon(Icons.access_time)),
+                  HomePageListItem("Add", Icon(Icons.add)),
+                  HomePageListItem("format", Icon(Icons.format_align_center)),
                 ],
               ),
             )
@@ -124,3 +129,38 @@ class _myAccountPageState extends State<myAccountPage> {
     );
   }
 }
+
+Widget HomePageListItem(String text, Icon icon) {
+  return Container(
+    width: 112.0,
+    child: Card(
+      borderOnForeground: true,
+      color: const Color(0xff009788),
+      child: Wrap(
+        alignment: WrapAlignment.center,
+        children: <Widget>[
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              IconButton(icon: icon, onPressed: (){},color: Colors.white,),
+              Text(text)
+            ],
+          )
+        ],
+      ),
+    ),
+  );
+}
+Widget ContainerBottomNavigationBar(String text, Icon icon){
+  return Container(
+      padding: EdgeInsets.all(10.0),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          IconButton(icon: icon, onPressed: (){}),
+          Text(text)
+        ],
+      )
+  );
+}
+

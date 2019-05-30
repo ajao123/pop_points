@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pop_points/components/Components.dart';
 
 class myAccountPage extends StatefulWidget {
   @override
@@ -130,37 +131,5 @@ class _myAccountPageState extends State<myAccountPage> {
   }
 }
 
-Widget HomePageListItem(String text, Icon icon) {
-  return Container(
-    width: 112.0,
-    child: Card(
-      borderOnForeground: true,
-      color: const Color(0xff009788),
-      child: Wrap(
-        alignment: WrapAlignment.center,
-        children: <Widget>[
-          Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              IconButton(icon: icon, onPressed: (){},color: Colors.white,),
-              Text(text)
-            ],
-          )
-        ],
-      ),
-    ),
-  );
-}
-Widget ContainerBottomNavigationBar(String text, Icon icon){
-  return Container(
-      padding: EdgeInsets.all(10.0),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          IconButton(icon: icon, onPressed: (){}),
-          Text(text)
-        ],
-      )
-  );
-}
+
 

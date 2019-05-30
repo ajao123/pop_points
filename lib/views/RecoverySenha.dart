@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pop_points/components/Components.dart';
 
 class recoverySenhaPage extends StatefulWidget {
   @override
@@ -70,34 +71,4 @@ Widget buildRaisedButton(String text, Function function, EdgeInsets edgeInsets,
       color: Colors.greenAccent,
     ),
   );
-}
-
-Widget buildTextFields(
-    String hintText,
-    InputBorder border,
-    Icon icon,
-    TextEditingController controller,
-    bool obscureText,
-    BorderRadius borderRadius,
-
-    EdgeInsets edgeInsets,
-    FormFieldValidator validator) {
-  return Padding(
-      padding: edgeInsets,
-      child: Container(
-        padding: edgeInsets,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: borderRadius,
-        ),
-        child: new TextFormField(
-          obscureText: obscureText,
-          decoration: InputDecoration(
-            hintText: hintText,
-            border: border,
-            prefixIcon: icon,
-          ),
-          validator: validator,
-        ),
-      ));
 }

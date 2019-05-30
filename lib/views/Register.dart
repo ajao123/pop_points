@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pop_points/components/Components.dart';
 
 class registerPage extends StatefulWidget {
   @override
@@ -113,6 +114,7 @@ class _registerPageState extends State<registerPage> {
                           child: buildTextFields(
                               "Código de Indicação",
                               InputBorder.none,
+                              null,
                               codigoController,
                               false,
                               new BorderRadius.circular(30.0),
@@ -131,6 +133,7 @@ class _registerPageState extends State<registerPage> {
                 buildTextFields(
                     "Nome Completo",
                     InputBorder.none,
+                    null,
                     nameController,
                     false,
                     new BorderRadius.circular(30.0),
@@ -140,6 +143,7 @@ class _registerPageState extends State<registerPage> {
                 buildTextFields(
                     "Email",
                     InputBorder.none,
+                    null,
                     emailController,
                     false,
                     new BorderRadius.circular(30.0),
@@ -149,6 +153,7 @@ class _registerPageState extends State<registerPage> {
                 buildTextFields(
                     "Informe sua senha",
                     InputBorder.none,
+                    null,
                     senhaController,
                     true,
                     new BorderRadius.circular(30.0),
@@ -158,6 +163,7 @@ class _registerPageState extends State<registerPage> {
                 buildTextFields(
                     "Repetir a senha",
                     InputBorder.none,
+                    null,
                     repeatSenhaController,
                     true,
                     new BorderRadius.circular(30.0),
@@ -219,31 +225,4 @@ Widget buildRaisedButton(String text, Function function, EdgeInsets edgeInsets,
       color: Colors.greenAccent,
     ),
   );
-}
-Widget buildTextFields(
-    String hintText,
-    InputBorder border,
-    TextEditingController controller,
-    bool obscureText,
-    BorderRadius borderRadius,
-
-    EdgeInsets edgeInsets,
-    FormFieldValidator validator) {
-  return Padding(
-      padding: edgeInsets,
-      child: Container(
-        padding: edgeInsets,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: borderRadius,
-        ),
-        child: new TextFormField(
-          obscureText: obscureText,
-          decoration: InputDecoration(
-            hintText: hintText,
-            border: border,
-          ),
-          validator: validator,
-        ),
-      ));
 }

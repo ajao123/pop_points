@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pop_points/RecoverySenha.dart';
-import 'package:pop_points/HomePage.dart';
-import 'package:pop_points/MyAccount.dart';
+import 'package:pop_points/views/RecoverySenha.dart';
+import 'package:pop_points/components/Components.dart';
+import 'package:pop_points/views/MyAccount.dart';
 
 class loginPage extends StatefulWidget {
   @override

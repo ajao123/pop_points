@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pop_points/Login.dart';
-import 'package:pop_points/Register.dart';
+import 'package:pop_points/views/Login.dart';
+import 'package:pop_points/views/Register.dart';
 
 class homePage extends StatefulWidget {
   @override
